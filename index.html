@@ -75,20 +75,20 @@
             if ('wakeLock' in navigator) {
                 isSupported = true;               
             } else {
-                alert("지원하지 않는 브라우저 입니다.\n원활한 작동을 위해 다른 브라우저를 사용해주세요.\n지원 브라우저 : 크롬, 삼성인터넷, 사파리");
+                //alert("지원하지 않는 브라우저 입니다.\n원활한 작동을 위해 다른 브라우저를 사용해주세요.\n지원 브라우저 : 크롬, 삼성인터넷, 사파리");
             }
             if (isSupported) {
                 try {
                     wakeLock = await navigator.wakeLock.request("screen");                   
-                    alert("Wake Lock Active");
+                    //alert("Wake Lock Active");
                     document.addEventListener("visibilitychange", async () => {
                         if (wakeLock !== null && document.visibilityState === "visible") {
                             wakeLock = await navigator.wakeLock.request("screen");
-                            alert("Wake Lock Reactive");
+                            //alert("Wake Lock Reactive");
                         }
                     });
                 } catch (err) {
-                    alert("Wake Lock Error" + err);
+                    //alert("Wake Lock Error" + err);
                 }   
             }                 
         }
