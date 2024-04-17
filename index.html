@@ -20,9 +20,9 @@
       </div>
       <div id="unity-warning"> </div>
     </div>
-    <video id="vid" width="320" height="240" autoplay loop="true" muted>
+    <!--<video id="vid" width="320" height="240" autoplay loop="true" muted>
         <source src="BlankVideo_10.mp4" type="video/mp4" />
-    </video>
+    </video>-->
     <script>
       window.addEventListener("load", function () {
         if ("serviceWorker" in navigator) {
@@ -68,29 +68,29 @@
 
         async function StopSleep() {  
 
-            var vid = document.getElementById("vid");
-            vid.play();
-            alert("비디오 재생됨");
+            //var vid = document.getElementById("vid");
+            //vid.play();
+            //alert("비디오 재생됨");
 
-            //if ('wakeLock' in navigator) {
-            //    isSupported = true;               
-            //} else {
-            //    alert("지원하지 않는 브라우저 입니다.\n원활한 작동을 위해 다른 브라우저를 사용해주세요.\n지원 브라우저 : 크롬, 삼성인터넷, 사파리");
-            //}
-            //if (isSupported) {
-            //    try {
-            //        wakeLock = await navigator.wakeLock.request("screen");                   
-            //        alert("Wake Lock Active");
-            //        document.addEventListener("visibilitychange", async () => {
-            //            if (wakeLock !== null && document.visibilityState === "visible") {
-            //                wakeLock = await navigator.wakeLock.request("screen");
-            //                alert("Wake Lock Reactive");
-            //            }
-            //        });
-            //    } catch (err) {
-            //        alert("Wake Lock Error" + err);
-            //    }   
-            //}                 
+            if ('wakeLock' in navigator) {
+                isSupported = true;               
+            } else {
+                alert("지원하지 않는 브라우저 입니다.\n원활한 작동을 위해 다른 브라우저를 사용해주세요.\n지원 브라우저 : 크롬, 삼성인터넷, 사파리");
+            }
+            if (isSupported) {
+                try {
+                    wakeLock = await navigator.wakeLock.request("screen");                   
+                    alert("Wake Lock Active");
+                    document.addEventListener("visibilitychange", async () => {
+                        if (wakeLock !== null && document.visibilityState === "visible") {
+                            wakeLock = await navigator.wakeLock.request("screen");
+                            alert("Wake Lock Reactive");
+                        }
+                    });
+                } catch (err) {
+                    alert("Wake Lock Error" + err);
+                }   
+            }                 
         }
 	    
       var buildUrl = "Build";
